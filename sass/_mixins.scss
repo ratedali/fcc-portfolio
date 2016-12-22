@@ -1,0 +1,26 @@
+@mixin flex() {
+    display: -webkit-flex;
+    display: flex;
+}
+@mixin v-align($alignment) {
+   @include flex();
+   -webkit-align-items: $alignment;
+   align-items: $alignment;
+}
+@mixin h-align($alignment) {
+    @include flex();
+    -webkit-justify-content: $alignment;
+    justify-content: $alignment;
+}
+
+@mixin transition($prop, $t) {
+    -webkit-transition: $prop $t;
+    -moz-transition: $prop $t;
+    transition: $prop $t;
+}
+
+@mixin transition-shape($prop, $t, $shape) {
+    -webkit-transition: $prop $t $shape;
+    -moz-transition: $prop $t $shape;
+    transition: $prop $t $shape;
+}

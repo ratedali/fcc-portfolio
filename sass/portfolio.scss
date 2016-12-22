@@ -1,0 +1,280 @@
+@import 'palette';
+@import 'mixins';
+@import 'material';
+
+$font-sans: Helvetica,Arial,sans-serif;
+$font-serif: Georgia,'Times New Roman',serif;
+
+body {
+    font-family: $font-sans;
+    background: #FAFAFA;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-sans;
+    font-weight: bold;
+}
+
+hr {
+    color: $divider-color;
+}
+
+.center-img {
+    margin: 0 auto;
+}
+
+.center-v {
+    @include v-align(center);
+}
+.center-h {
+    @include h-align(center);
+}
+
+@mixin center-text {
+    text-align: center;
+}
+
+.navbar-custom {
+    @include card-2;
+    background: $primary-color-dark;
+    font-family: $font-sans;
+    border: none;
+
+    .navbar-brand {
+        color: white;
+        font-family: $font-sans;
+        font-weight: 900;
+        &:hover {
+            color: white;
+        }
+    }
+
+    .navbar-nav {
+        letter-spacing: .2em;
+        li {
+            a {
+                color: white;
+                font-size: 1.5em;
+                @include transition(background, 800ms);
+                @include card-0;
+                &:hover,
+                &:focus,
+                &:active {
+                    color: white;
+                }
+            }
+            &.active {
+                 a {
+                     color: white;
+                     background: $accent-color;
+                     &:active,
+                     &:focus,
+                     &:hover {
+                         color: white;
+                         background: $accent-color;
+                     }
+                 }
+            }
+        }
+    }
+
+	.navbar-toggle {
+		color: white;
+		font-size: 10px;
+		border-color: white;
+		&:hover,
+		&:focus {
+			background-color: $accent-color;
+			color: white;
+			border-color: $accent-color;
+		}
+	}
+}
+
+.navbar-custom.affix {
+    @include card-5();
+}
+
+@media (min-width: 992px) {
+    .navbar-custom {
+        padding: 25px 0;
+        @include transition(padding, 300ms);
+
+        .navbar-brand {
+            font-size: 4em;
+            height: initial;
+            padding: initial;
+            margin-left: 20px !important; 
+            line-height: inherit;
+            @include transition(all, 300ms);
+        }
+
+        .navbar-nav {
+            li {
+                margin: 1em;
+                a {
+                    &:hover {
+                        color: white;
+                    }
+                }
+                &.active {
+                    a {
+                        @include card-2;
+                    }
+                }
+            }
+        }
+    }
+    .navbar-custom.affix {
+        padding: 10px 0;
+    }
+}
+
+header {
+    @include card-3;
+    background-color: $primary-color;
+    color: white;
+    text-align: center;
+    .container-fluid {
+        padding-bottom: 50px;
+        padding-top: 100px;
+
+        .profile-img {
+            @include h-align(center);
+            margin-bottom: 20px;
+        }
+
+        .info-txt {
+            text-align: center;
+            .name {
+                display: block;
+                font-weight: bold;
+                font-size: 4em;
+            }
+            .skills {
+                font-family: $font-serif;
+                font-size: 2em;
+            }
+        }
+        
+        .social {
+            @include h-align(center);
+            @include v-align(flex-end);
+            margin: 2em 0 0;
+            a {
+                font-size: 2.5em;
+                margin: 0 1em 0;
+                color: white;
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    header {
+        .container-fluid {
+            padding-top: 300px;
+            .profile-img {
+                @include h-align(flex-end);
+                margin-bottom: 0;
+                margin-right: 50px;
+            }
+            .info-txt {
+                text-align: left;
+                margin-left: 50px;
+            }
+            .social {
+                margin: 150px 0 50px;
+                a {
+                    font-size: 3.5em;
+                }
+            }
+        }
+    }
+}
+
+section {
+    padding: 20px 0;
+    .section-header {
+        @include center-text;
+        h2 {
+            color: $primary-text-color;
+            margin-bottom: .5em;
+            font-size: 36px;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    section {
+        .section-header {
+            h2 {
+                font-size: 72px;
+            }
+        }
+    }
+}
+
+#projects {
+    .project-card {
+        @include liftable-card-3();
+        margin: 1em 0 .5em;
+        font-size: 16px;
+        background: white;
+        max-width: 500px;
+        .project-info {
+            color: $primary-text-color;
+            padding: 0 1em .5em;
+            .project-title {
+                font-weight: normal;
+                font-size: 2em;
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+@media(min-width: 992px) {
+    #projects {
+        .project-card {
+            font-size: 20px;
+            max-width: unset;
+        }
+    }
+}
+
+#career {
+    .info-card {
+        @include liftable-card-3;
+        margin: .5em;
+        padding: 2em;
+        font-size: 16px;
+        .title {
+            margin-top: 0;
+            font-size: 2em;
+        }
+    }
+    #career-resume {
+        color: white;
+        background-color: $accent-color-2;
+    }
+
+    #career-education {
+        color: white;
+        background-color: $accent-color-3;
+    }
+}
+
+@media (min-width: 992px) {
+    #career {
+        .info-card {
+            font-size: 20px;
+        }
+    }
+}
